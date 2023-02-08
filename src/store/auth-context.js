@@ -4,8 +4,10 @@ import React from "react";
 
 export const AuthContext = React.createContext({
   isLoggedIn: false,
+  navIsActive: false,
   login: () => {},
   logout: () => {},
+  navChange: () => {},
 });
 
 const AuthContextProvider = (props) => {
@@ -16,6 +18,12 @@ const AuthContextProvider = (props) => {
   }, []);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [navIsActive, setNavIsActive] = useState(false);
+
+  const navChangeHandler = () => {
+    setNavIsActive(!navIsActive);
+  };
 
   const loginHandler = () => {
     localStorage.setItem("isLoggedIn", 1);
@@ -29,8 +37,10 @@ const AuthContextProvider = (props) => {
 
   const authCtx = {
     isLoggedIn,
+    navIsActive,
     login: loginHandler,
     logout: logoutHandler,
+    navChange: navChangeHandler,
   };
 
   return (

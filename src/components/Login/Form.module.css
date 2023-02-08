@@ -16,7 +16,7 @@
 
 .form button {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 2rem;
   padding: 1rem;
   background-color: var(--primary);
   border: none;
@@ -26,5 +26,5 @@
 }
 
 .form button:disabled {
-  color: red;
+  background-color: rgba(0, 0, 0, 0.4);
 }

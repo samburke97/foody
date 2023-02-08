@@ -1,21 +1,31 @@
+import { useContext } from "react";
+
 import ReactDOM from "react-dom";
+import { AuthContext } from "../../store/auth-context";
 
 import Form from "../Login/Form";
+import Cart from "../Homepage/Cart";
 
 import styles from "./Modal.module.css";
 
 export const Background = (props) => {
+  const authCtx = useContext(AuthContext);
+
   return (
-    <div className={styles.background} onClick={props.onExit}>
+    <div className={styles.background} onClick={authCtx.navChange}>
       {props.children}
     </div>
   );
 };
 
 export const Overlay = (props) => {
+  const authCtx = useContext(AuthContext);
+
   return (
     <div className={styles.overlay}>
-      <Form onExit={props.onExit} />
+      {!authCtx.isLoggedIn && <Form />}
+
+      {authCtx.isLoggedIn && <Cart />}
     </div>
   );
 };
@@ -25,8 +35,8 @@ const overlay = document.getElementById("overlay");
 const Modal = (props) => {
   return (
     <>
-      {ReactDOM.createPortal(<Background onExit={props.onExit} />, overlay)}
-      {ReactDOM.createPortal(<Overlay onExit={props.onExit} />, overlay)}
+      {ReactDOM.createPortal(<Background />, overlay)}
+      {ReactDOM.createPortal(<Overlay />, overlay)}
     </>
   );
 };

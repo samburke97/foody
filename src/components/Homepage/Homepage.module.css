@@ -1,0 +1,23 @@
+.wrapper {
+  background: url("../../assets/homepage.jpg") no-repeat top left;
+  background-size: cover;
+  height: 50rem;
+}
+
+.content {
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.header .icon {
+  vertical-align: middle;
+}
+.header .icon:hover {
+  color: var(--secondary);
+}
+
+.header span {
+  padding-left: 0.5rem;
+  font-size: 2rem;
+}

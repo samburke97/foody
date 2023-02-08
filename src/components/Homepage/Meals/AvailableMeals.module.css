@@ -1,0 +1,12 @@
+.wrapper {
+  width: 60rem;
+  margin: 0 auto;
+  margin-top: 15rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 3rem;
+}

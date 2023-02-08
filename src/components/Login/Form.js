@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState, useRef } from "react";
 
 import styles from "./Form.module.css";
 import { FaHamburger } from "react-icons/fa";
@@ -14,6 +14,8 @@ const emailReducer = (state, action) => {
         value: action.val,
         isValid: action.val.includes("@"),
       };
+    case "BLUR":
+      return { value: state.value, isValid: state.value.includes("@") };
     default:
       return { value: "", isValid: false };
   }
@@ -23,6 +25,8 @@ const passwordReducer = (state, action) => {
   switch (action.type) {
     case "INPUT":
       return { value: action.val, isValid: action.val.trim().length > 6 };
+    case "BLUR":
+      return { value: state.value, isValid: state.value.trim().length > 6 };
     default:
       return { value: "", isValid: false };
   }
@@ -63,17 +67,29 @@ const Form = (props) => {
 
   // Change Handlers for Email & Password State
 
-  const emailChangeHandler = () => {
+  const emailChangeHandler = (event) => {
     dispatchEmailState({
       type: "INPUT",
-      val: emailState.value,
+      val: event.target.value,
     });
   };
 
-  const passwordChangeHandler = () => {
+  const passwordChangeHandler = (event) => {
     dispatchPasswordState({
       type: "INPUT",
-      val: passwordState.value,
+      val: event.target.value,
+    });
+  };
+
+  const validatePasswordHandler = () => {
+    dispatchPasswordState({
+      type: "BLUR",
+    });
+  };
+
+  const validateEmailHandler = () => {
+    dispatchEmailState({
+      type: "BLUR",
     });
   };
 
@@ -93,12 +109,22 @@ const Form = (props) => {
     };
   }, [emailIsValid, passwordIsValid]);
 
+  //Manage Ref
+
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
   //Handle Login via AuthContext
 
   const loginHandler = (event) => {
     event.preventDefault();
     if (formIsValid) {
       authCtx.login();
+      authCtx.navChange();
+    } else if (!emailIsValid) {
+      emailInputRef.current.focus();
+    } else {
+      passwordInputRef.current.focus();
     }
   };
 
@@ -106,12 +132,18 @@ const Form = (props) => {
     <>
       <div className={styles.header}>
         <h2>Foody</h2>
-        <FaHamburger size={24} className={styles.icon} onClick={props.onExit} />
+        <FaHamburger
+          size={24}
+          className={styles.icon}
+          onClick={authCtx.navChange}
+        />
       </div>
       <form className={styles.form} onSubmit={loginHandler}>
         <Input
-          value={emailState.value}
           onChange={emailChangeHandler}
+          onBlur={validateEmailHandler}
+          isValid={emailIsValid}
+          ref={emailInputRef}
           label="Email"
           input={{
             type: "email",
@@ -120,8 +152,10 @@ const Form = (props) => {
           }}
         />
         <Input
-          value={passwordState.value}
           onChange={passwordChangeHandler}
+          onBlur={validatePasswordHandler}
+          isValid={passwordIsValid}
+          ref={passwordInputRef}
           label="Password"
           input={{
             type: "password",
@@ -129,7 +163,7 @@ const Form = (props) => {
             id: "password",
           }}
         />
-        <button disabled={!formIsValid}>Submit</button>
+        <button>Submit</button>
       </form>
     </>
   );

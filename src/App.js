@@ -11,10 +11,11 @@ function App() {
 
   return (
     <>
-      {!authCtx.isLoggedIn && <Header />}
-      {authCtx.isLoggedIn && <Homepage />}
-      {/* {ORDER} */}
-      <Footer />
+      <main>
+        {!authCtx.isLoggedIn && <Header />}
+        {authCtx.isLoggedIn && <Homepage />}
+        <Footer />
+      </main>
     </>
   );
 }
