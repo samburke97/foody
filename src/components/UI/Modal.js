@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { AuthContext } from "../../store/auth-context";
 
 import Form from "../Login/Form";
-import Cart from "../Homepage/Cart";
+import Cart from "../Homepage/Meals/Cart/Cart";
 
 import styles from "./Modal.module.css";
 

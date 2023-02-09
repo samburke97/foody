@@ -1,10 +1,12 @@
 .wrapper {
-  width: 60rem;
+  max-width: 60rem;
   margin: 0 auto;
-  margin-top: 15rem;
-  padding: 1rem;
+  margin-top: 10rem;
+  padding: 2rem;
   background: #fff;
   border-radius: 12px;
+  z-index: 10;
+  position: relative;
 }
 
 h1 {

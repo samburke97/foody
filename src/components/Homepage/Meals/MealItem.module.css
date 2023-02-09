@@ -1,4 +1,14 @@
 .form {
   display: flex;
   justify-content: space-between;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.form .price {
+  font-style: italic;
+}
+
+.meals {
+  width: 15%;
 }

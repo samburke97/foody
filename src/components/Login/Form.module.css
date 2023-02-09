@@ -28,3 +28,25 @@
 .form button:disabled {
   background-color: rgba(0, 0, 0, 0.4);
 }
+
+.form label {
+  display: block;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+
+.form input {
+  width: 100%;
+  padding: 0.75rem 2rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: lightgray;
+}
+
+.form input:focus {
+  background: lightsteelblue;
+}
+
+.form input.invalid {
+  background: lightcoral;
+}

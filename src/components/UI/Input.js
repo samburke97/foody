@@ -4,7 +4,7 @@ import styles from "./Input.module.css";
 
 const Input = React.forwardRef((props, ref) => {
   return (
-    <div className={styles.input}>
+    <>
       <label htmlFor={props.label}>{props.label}</label>
       <input
         {...props.input}
@@ -12,7 +12,7 @@ const Input = React.forwardRef((props, ref) => {
         onChange={props.onChange}
         className={`${props.isValid === false ? styles.invalid : ""}`}
       />
-    </div>
+    </>
   );
 });
 
