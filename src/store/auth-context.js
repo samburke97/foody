@@ -32,6 +32,7 @@ const AuthContextProvider = (props) => {
 
   const logoutHandler = () => {
     setIsLoggedIn(false);
+    setNavIsActive(false);
     localStorage.removeItem("isLoggedIn");
   };
 

@@ -1,4 +1,20 @@
 .wrapper {
   width: 90%;
-  margin: 0 auto;
+  margin: 1rem auto;
+}
+
+.wrapper .content {
+  font-size: 1.2rem;
+}
+
+.wrapper .actions {
+  font-size: 1.5rem;
+}
+
+.wrapper .logout {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  border: none;
+  padding: 0.5rem 1rem;
 }
