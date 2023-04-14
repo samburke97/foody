@@ -6,7 +6,9 @@ const Footer = () => {
   return (
     <div className={styles.wrapper}>
       <footer className={styles.footer}>
-        <div>HUNGRY?</div>
+        <div>
+          <h2>Hungry?</h2>
+        </div>
         <div className={styles.icons}>
           <span>
             <FaFacebook size={48} />

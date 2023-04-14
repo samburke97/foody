@@ -11,8 +11,17 @@
   font-size: 1.5rem;
 }
 
-.wrapper .logout {
+.wrapper .btn {
   margin-top: 0.5rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+
+.wrapper .order {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
   font-size: 1.2rem;
   font-family: inherit;
   border: none;

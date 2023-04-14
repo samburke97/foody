@@ -100,7 +100,6 @@ const Form = (props) => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log("CHECKING");
       setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
 

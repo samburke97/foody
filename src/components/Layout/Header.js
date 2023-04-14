@@ -17,9 +17,7 @@ const Header = () => {
           <FaHamburger size={72} onClick={authCtx.navChange} />
           {authCtx.navIsActive && <Modal onExit={authCtx.navChange} />}
         </div>
-
         <h1>FOODY</h1>
-        <p>Brisbane's Most Delectable</p>
       </header>
     </div>
   );
