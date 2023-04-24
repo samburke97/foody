@@ -14,4 +14,4 @@ Login via the Hamburger icon on the homepage, the application uses localstorage 
 
 #### How do I create an order?
 
-Add your desried items to cart and navigate to the Hamburger icon to adjust items and order.
+Add your desiried items to cart and navigate to the Hamburger icon to adjust items and order.
