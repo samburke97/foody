@@ -8,17 +8,16 @@ import styles from "../Cart/Order.module.css";
 
 const Order = () => {
   const [checkout, setCheckout] = useState(false);
-  const dispatch = useDispatch;
   const items = useSelector((state) => state.cart.items);
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
+  const totalAmount = useSelector((state) => state.cart.totalAmount);
+  const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
 
   const addItemHandler = (item) => {
     dispatch(
       cartActions.addItemToCart({
-        id: item.id,
-        name: item.name,
-        price: item.price,
+        ...item,
+        quantity: 1,
       })
     );
   };
@@ -30,8 +29,6 @@ const Order = () => {
   const checkoutHandler = () => {
     setCheckout(!checkout);
   };
-
-  const orderTotal = totalQuantity.toFixed(2);
 
   const cart = items.map((meal) => (
     <CartItems
@@ -57,14 +54,21 @@ const Order = () => {
       }
     );
     authCtx.navChange();
+    dispatch(cartActions.clearCart());
   };
+
+  const totalQuantity = items.reduce((curNum, item) => {
+    return curNum + item.quantity;
+  }, 0);
+
+  const totalPrice = totalAmount.toFixed(2);
 
   if (totalQuantity > 0) {
     return (
       <div className={styles.wrapper}>
         <h1>Your Order</h1>
         <div>{cart}</div>
-        <div className={styles.actions}>Total Amount: {orderTotal}</div>
+        <div className={styles.actions}>Total Amount: ${totalPrice}</div>
         <div>
           <button className={styles.btn} onClick={authCtx.navChange}>
             Close
@@ -80,9 +84,7 @@ const Order = () => {
   return (
     <div className={styles.wrapper}>
       <h1>Your Order</h1>
-      <p className={styles.content}>
-        Hungry? We've got you covered, add an item.
-      </p>
+      <p>Hungry? We've got you covered, add an item.</p>
       <button className={styles.btn} onClick={authCtx.logout}>
         Logout
       </button>

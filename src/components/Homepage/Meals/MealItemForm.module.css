@@ -1,28 +1,22 @@
-.data {
-  width: 20rem;
+.form {
+  width: 8rem;
   max-width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.form label {
-  margin: 0;
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
-  height: 100%;
-  font-size: 1.2rem;
+  text-align: center;
+  margin-left: 1rem;
 }
 
 .form input {
-  width: 75%;
-  margin-bottom: 0.5rem;
-  margin-right: 0.5rem;
   justify-content: flex-end;
   padding: 0.25rem 1rem;
   border: none;
   border-radius: 8px;
   background-color: lightgray;
-  text-align: center;
+}
+
+.form .control {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .form button {

@@ -2,11 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { AuthContext } from "../../store/auth-context";
 import { useSelector } from "react-redux";
-
 import Modal from "../UI/Modal";
-
-import styles from "./Homepage.module.css";
 import AvailableMeals from "./Meals/AvailableMeals";
+import styles from "./Homepage.module.css";
 
 const Homepage = () => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
@@ -25,7 +23,7 @@ const Homepage = () => {
 
     const timer = setTimeout(() => {
       setBtnIsHighlighted(true);
-    }, 300);
+    }, 200);
 
     return () => {
       clearTimeout(timer);

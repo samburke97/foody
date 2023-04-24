@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import MealItem from "./MealItem";
 
@@ -8,7 +7,7 @@ const Meals = () => {
 
   useEffect(() => {
     const fetchMeals = async () => {
-      // this gives us the response in JSON
+      //JSON Response
       const response = await fetch(
         "https://react-http-b681a-default-rtdb.firebaseio.com/meals.json"
       );

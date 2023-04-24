@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../store/auth-context";
 import Form from "../Login/Form";
-import Cart from "../Homepage/Meals/Cart/Cart";
+import Order from "../Homepage/Meals/Cart/Order";
 import styles from "./Modal.module.css";
 
 export const Background = (props) => {
@@ -15,21 +15,21 @@ export const Background = (props) => {
   );
 };
 
-export const Overlay = (props) => {
+export const Overlay = () => {
   const authCtx = useContext(AuthContext);
 
   return (
     <div className={styles.overlay}>
       {!authCtx.isLoggedIn && <Form />}
 
-      {authCtx.isLoggedIn && <Cart />}
+      {authCtx.isLoggedIn && <Order />}
     </div>
   );
 };
 
 const overlay = document.getElementById("overlay");
 
-const Modal = (props) => {
+const Modal = () => {
   return (
     <>
       {ReactDOM.createPortal(<Background />, overlay)}

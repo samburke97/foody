@@ -1,6 +1,5 @@
-import styles from "./AvailableMeals.module.css";
-
 import Meals from "./Meals";
+import styles from "./AvailableMeals.module.css";
 
 const AvailableMeals = () => {
   return (

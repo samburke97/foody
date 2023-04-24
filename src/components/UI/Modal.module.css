@@ -16,6 +16,7 @@
   height: 100vh;
   background-color: #ffffff;
   z-index: 20;
+  overflow: scroll;
 }
 
 @media (max-width: 768px) {

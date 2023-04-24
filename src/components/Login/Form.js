@@ -145,6 +145,7 @@ const Form = (props) => {
             onBlur: validateEmailHandler,
           }}
         />
+        {!emailIsValid && <p>Please enter a valid email (must contain '@')</p>}
         <Input
           ref={passwordInputRef}
           label="Password"
@@ -158,6 +159,9 @@ const Form = (props) => {
             onBlur: validatePasswordHandler,
           }}
         />
+        {!passwordIsValid && (
+          <p>Please enter a valid password (greater than 6 characters)</p>
+        )}
         <button>Submit</button>
       </form>
     </>

@@ -1,4 +1,4 @@
-import styles from "./CatItems.module.css";
+import styles from "./CartItems.module.css";
 
 const CartItems = (props) => {
   return (
@@ -7,7 +7,7 @@ const CartItems = (props) => {
         <div className={styles.title}>{props.name}</div>
         <div>
           <div>QTY: {props.amount}</div>
-          <div>PRICE:{props.price}</div>
+          <div>PRICE: ${props.price}</div>
         </div>
       </div>
       <div className={styles.actions}>

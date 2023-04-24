@@ -3,8 +3,9 @@
   margin: 1rem auto;
 }
 
-.wrapper .content {
+.wrapper p {
   font-size: 1.2rem;
+  margin: 0.5rem 0;
 }
 
 .wrapper .actions {

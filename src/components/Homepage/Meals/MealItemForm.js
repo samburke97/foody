@@ -1,7 +1,5 @@
 import { useState, useRef } from "react";
-
 import Input from "../../UI/Input";
-
 import styles from "./MealItemForm.module.css";
 
 const MealItemForm = (props) => {
@@ -30,7 +28,7 @@ const MealItemForm = (props) => {
     <form onSubmit={handleFormSubmit} className={styles.form}>
       <div className={styles.control}>
         <Input
-          label="Amount"
+          label="Amount:"
           ref={amountInputRef}
           input={{
             type: "number",

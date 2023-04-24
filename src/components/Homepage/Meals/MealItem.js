@@ -1,9 +1,6 @@
 import { useDispatch } from "react-redux";
-
 import { cartActions } from "../../../store/cart-slice";
-
 import MealItemForm from "./MealItemForm";
-
 import styles from "./MealItem.module.css";
 
 const MealItem = (props) => {
@@ -31,9 +28,7 @@ const MealItem = (props) => {
         </div>
         <div className={styles.price}>{price}</div>
       </div>
-      <div className={styles.meals}>
-        <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
-      </div>
+      <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
     </li>
   );
 };
