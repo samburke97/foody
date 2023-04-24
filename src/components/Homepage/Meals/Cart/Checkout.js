@@ -116,6 +116,7 @@ const Checkout = (props) => {
             onBlur: firstNameBlurHandler,
           }}
         />
+        {firstNameHasError && <p>Please enter a valid first name</p>}
       </div>
       <div className={styles.control}>
         <Input
@@ -131,6 +132,7 @@ const Checkout = (props) => {
             onBlur: lastNameBlurHandler,
           }}
         />
+        {lastNameHasError && <p>Please enter a valid last name</p>}
       </div>
       <div className={styles.control}>
         <Input
@@ -146,6 +148,7 @@ const Checkout = (props) => {
             onBlur: streetBlurHandler,
           }}
         />
+        {streetHasError && <p>Please enter a valid street</p>}
       </div>
       <div className={styles.control}>
         <Input
@@ -161,6 +164,7 @@ const Checkout = (props) => {
             onBlur: cityBlurHandler,
           }}
         />
+        {streetHasError && <p>Please enter a valid city</p>}
       </div>
       <div className={styles.control}>
         <Input
@@ -176,8 +180,12 @@ const Checkout = (props) => {
             onBlur: postalBlurHandler,
           }}
         />
+        {streetHasError && <p>Please enter a valid post code</p>}
       </div>
       <button className={styles.btn}>Submit</button>
+      <button className={styles.btn} onClick={props.onClick}>
+        Close
+      </button>
     </form>
   );
 };

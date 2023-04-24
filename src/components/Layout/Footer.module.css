@@ -19,13 +19,13 @@
 
 @media screen and (max-width: 768px) {
   .footer h2 {
-    font-size: 5rem;
+    font-size: 8rem;
   }
 }
 
 .icons {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   flex-direction: column;
   gap: 1rem;
 }

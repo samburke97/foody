@@ -69,15 +69,22 @@ const Order = () => {
         <h1>Your Order</h1>
         <div>{cart}</div>
         <div className={styles.actions}>Total Amount: ${totalPrice}</div>
-        <div>
-          <button className={styles.btn} onClick={authCtx.navChange}>
-            Close
-          </button>
-          <button className={styles.order} onClick={checkoutHandler}>
-            Order
-          </button>
-        </div>
-        {checkout && <Checkout onConfirm={confirmOrderHandler} />}
+        {!checkout && (
+          <div>
+            <button className={styles.btn} onClick={authCtx.navChange}>
+              Close
+            </button>
+            <button className={styles.order} onClick={checkoutHandler}>
+              Order
+            </button>
+          </div>
+        )}
+        {checkout && (
+          <Checkout
+            onConfirm={confirmOrderHandler}
+            onClick={authCtx.navChange}
+          />
+        )}
       </div>
     );
   }
