@@ -164,7 +164,7 @@ const Checkout = (props) => {
             onBlur: cityBlurHandler,
           }}
         />
-        {streetHasError && <p>Please enter a valid city</p>}
+        {cityHasError && <p>Please enter a valid city</p>}
       </div>
       <div className={styles.control}>
         <Input
@@ -180,7 +180,7 @@ const Checkout = (props) => {
             onBlur: postalBlurHandler,
           }}
         />
-        {streetHasError && <p>Please enter a valid post code</p>}
+        {postalHasError && <p>Please enter a valid post code</p>}
       </div>
       <button className={styles.btn}>Submit</button>
       <button className={styles.btn} onClick={props.onClick}>

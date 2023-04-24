@@ -15,26 +15,17 @@
   width: 20rem;
   max-width: 100%;
   padding: 0.75rem 2rem;
-  border: 1px solid lightgray;
+  border: 1px solid lightgrey;
   border-radius: 8px;
-  background-color: lightgray;
 }
 
 .control input:focus {
   background: lightsteelblue;
 }
 
-.control input.invalid {
-  background: lightcoral;
-}
-
 .control p {
   margin-top: 0.5rem;
   font-size: 1rem;
-}
-
-.control input:focus {
-  border: 1px solid lightcoral;
 }
 
 .btn {
