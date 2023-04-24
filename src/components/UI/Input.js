@@ -9,8 +9,8 @@ const Input = React.forwardRef((props, ref) => {
       <input
         {...props.input}
         ref={ref}
-        onChange={props.onChange}
-        className={`${props.isValid === false ? styles.invalid : ""}`}
+        placeholder={props.input.placeholder}
+        className={props.isValid === false ? `${styles.invalid}` : ""}
       />
     </>
   );

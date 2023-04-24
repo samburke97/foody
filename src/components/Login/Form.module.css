@@ -9,6 +9,10 @@
   color: var(--secondary);
 }
 
+.header h2 {
+  font-size: 2rem;
+}
+
 .form {
   width: 90%;
   margin: 2rem auto;

@@ -28,7 +28,7 @@ const MealItemForm = (props) => {
 
   return (
     <form onSubmit={handleFormSubmit} className={styles.form}>
-      <div className={styles.data}>
+      <div className={styles.control}>
         <Input
           label="Amount"
           ref={amountInputRef}
@@ -44,7 +44,6 @@ const MealItemForm = (props) => {
         />
       </div>
       <button>Add To Cart</button>
-
       {!amountIsValid && <p>Please enter a valid amount (1-5)</p>}
     </form>
   );

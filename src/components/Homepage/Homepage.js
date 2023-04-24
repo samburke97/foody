@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { AuthContext } from "../../store/auth-context";
-import { CartContext } from "../../store/cart-context";
+import { useSelector } from "react-redux";
 
 import Modal from "../UI/Modal";
 
@@ -12,9 +12,8 @@ const Homepage = () => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
 
   const authCtx = useContext(AuthContext);
-  const cartCtx = useContext(CartContext);
 
-  const { items } = cartCtx;
+  const items = useSelector((state) => state.cart.items);
 
   const btnClasses = `${styles.icon} ${btnIsHighlighted ? styles.bump : ""}`;
 
@@ -34,7 +33,7 @@ const Homepage = () => {
   }, [items]);
 
   const numberOfCartItems = items.reduce((curNum, item) => {
-    return curNum + item.amount;
+    return curNum + item.quantity;
   }, 0);
 
   return (

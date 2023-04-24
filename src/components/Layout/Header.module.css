@@ -34,11 +34,13 @@
   color: var(--secondary);
 }
 
-.bump {
-  animation: bump 100ms ease-out;
+/* Animations */
+
+.thrust {
+  animation: thrust infinite ease-in;
 }
 
-@keyframes bump {
+@keyframes thrust {
   0% {
     transform: scale(1);
   }

@@ -1,39 +1,45 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../../../store/auth-context";
-import { CartContext } from "../../../../store/cart-context";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../../../store/cart-slice";
 import Checkout from "./Checkout";
-
 import CartItems from "./CartItems";
-
 import styles from "../Cart/Order.module.css";
 
 const Order = () => {
   const [checkout, setCheckout] = useState(false);
-
+  const dispatch = useDispatch;
+  const items = useSelector((state) => state.cart.items);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const authCtx = useContext(AuthContext);
-  const cartCtx = useContext(CartContext);
 
   const addItemHandler = (item) => {
-    cartCtx.addItem({ ...item, amount: 1 });
+    dispatch(
+      cartActions.addItemToCart({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+      })
+    );
   };
 
   const removeItemHandler = (id) => {
-    cartCtx.removeItem(id);
+    dispatch(cartActions.removeItemFromCart(id));
   };
 
   const checkoutHandler = () => {
     setCheckout(!checkout);
   };
 
-  const orderTotal = cartCtx.totalAmount.toFixed(2);
+  const orderTotal = totalQuantity.toFixed(2);
 
-  const cart = cartCtx.items.map((meal) => (
+  const cart = items.map((meal) => (
     <CartItems
       key={meal.id}
       id={meal.id}
       name={meal.name}
       price={meal.price}
-      amount={meal.amount}
+      amount={meal.quantity}
       onAddItem={addItemHandler.bind(null, meal)}
       onRemoveItem={removeItemHandler.bind(null, meal.id)}
     />
@@ -46,48 +52,40 @@ const Order = () => {
         method: "POST",
         body: JSON.stringify({
           user: userData,
-          orderedItems: cartCtx.items,
+          orderedItems: items,
         }),
       }
     );
-    cartCtx.clearCart();
+    authCtx.navChange();
   };
 
+  if (totalQuantity > 0) {
+    return (
+      <div className={styles.wrapper}>
+        <h1>Your Order</h1>
+        <div>{cart}</div>
+        <div className={styles.actions}>Total Amount: {orderTotal}</div>
+        <div>
+          <button className={styles.btn} onClick={authCtx.navChange}>
+            Close
+          </button>
+          <button className={styles.order} onClick={checkoutHandler}>
+            Order
+          </button>
+        </div>
+        {checkout && <Checkout onConfirm={confirmOrderHandler} />}
+      </div>
+    );
+  }
   return (
     <div className={styles.wrapper}>
       <h1>Your Order</h1>
-      {cartCtx.totalAmount < 1 ? (
-        <p className={styles.content}>
-          Hungry? We've got you covered, add an item.
-        </p>
-      ) : (
-        ""
-      )}
-      <div>{cart}</div>
-      {cartCtx.totalAmount < 1 ? (
-        ""
-      ) : (
-        <div className={styles.actions}>Total Amount: {orderTotal}</div>
-      )}
-      {cartCtx.totalAmount === 0 && (
-        <button className={styles.btn} onClick={authCtx.logout}>
-          Logout
-        </button>
-      )}
-
-      {cartCtx.totalAmount > 1 && (
-        <button className={styles.btn} onClick={authCtx.navChange}>
-          Close
-        </button>
-      )}
-      {cartCtx.totalAmount > 1 && (
-        <button className={styles.order} onClick={checkoutHandler}>
-          Order
-        </button>
-      )}
-      {checkout && cartCtx.totalAmount > 0 && (
-        <Checkout onConfirm={confirmOrderHandler} />
-      )}
+      <p className={styles.content}>
+        Hungry? We've got you covered, add an item.
+      </p>
+      <button className={styles.btn} onClick={authCtx.logout}>
+        Logout
+      </button>
     </div>
   );
 };

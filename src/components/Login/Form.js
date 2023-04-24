@@ -5,7 +5,7 @@ import { FaHamburger } from "react-icons/fa";
 import { AuthContext } from "../../store/auth-context";
 import Input from "../UI/Input";
 
-//Email Reducer & Password Reducer
+//Email Reducer & Password Reducers
 
 const emailReducer = (state, action) => {
   switch (action.type) {
@@ -33,8 +33,6 @@ const passwordReducer = (state, action) => {
 };
 
 const Form = (props) => {
-  // Establish Context
-
   const authCtx = useContext(AuthContext);
 
   // Manage States for Button and Styles
@@ -53,7 +51,7 @@ const Form = (props) => {
     isValid: null,
   };
 
-  //Use Reducer for validating Email & Password States
+  //Use Reducer for validating states
 
   const [emailState, dispatchEmailState] = useReducer(
     emailReducer,
@@ -64,8 +62,6 @@ const Form = (props) => {
     passwordReducer,
     defaultPasswordState
   );
-
-  // Change Handlers for Email & Password State
 
   const emailChangeHandler = (event) => {
     dispatchEmailState({
@@ -93,7 +89,7 @@ const Form = (props) => {
     });
   };
 
-  //Set form is Valid using UseEffect
+  //Set form validity
 
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
@@ -108,12 +104,10 @@ const Form = (props) => {
     };
   }, [emailIsValid, passwordIsValid]);
 
-  //Manage Ref
-
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  //Handle Login via AuthContext
+  //Handle Login
 
   const loginHandler = (event) => {
     event.preventDefault();
@@ -132,34 +126,36 @@ const Form = (props) => {
       <div className={styles.header}>
         <h2>Foody</h2>
         <FaHamburger
-          size={24}
+          size={34}
           className={styles.icon}
           onClick={authCtx.navChange}
         />
       </div>
       <form className={styles.form} onSubmit={loginHandler}>
         <Input
-          onChange={emailChangeHandler}
-          onBlur={validateEmailHandler}
-          isValid={emailIsValid}
           ref={emailInputRef}
           label="Email"
+          isValid={emailIsValid}
           input={{
             type: "email",
             name: "email",
             id: "email",
+            placeholder: "What's your email? 📧",
+            onChange: emailChangeHandler,
+            onBlur: validateEmailHandler,
           }}
         />
         <Input
-          onChange={passwordChangeHandler}
-          onBlur={validatePasswordHandler}
-          isValid={passwordIsValid}
           ref={passwordInputRef}
           label="Password"
+          isValid={passwordIsValid}
           input={{
             type: "password",
             name: "password",
             id: "password",
+            placeholder: "Make it strong 💪",
+            onChange: passwordChangeHandler,
+            onBlur: validatePasswordHandler,
           }}
         />
         <button>Submit</button>
