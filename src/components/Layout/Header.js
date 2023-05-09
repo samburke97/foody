@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { FaHamburger } from "react-icons/fa";
 import { AuthContext } from "../../store/auth-context";
 import Modal from "../UI/Modal";

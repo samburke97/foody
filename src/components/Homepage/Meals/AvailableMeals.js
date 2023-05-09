@@ -1,3 +1,4 @@
+import React from "react";
 import Meals from "./Meals";
 import styles from "./AvailableMeals.module.css";
 

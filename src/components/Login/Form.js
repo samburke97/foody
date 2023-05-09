@@ -1,4 +1,10 @@
-import { useContext, useEffect, useReducer, useState, useRef } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+  useRef,
+} from "react";
 
 import styles from "./Form.module.css";
 import { FaHamburger } from "react-icons/fa";

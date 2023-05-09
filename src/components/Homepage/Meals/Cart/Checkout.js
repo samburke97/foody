@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import Input from "../../../UI/Input";
 import useInput from "../../../../hooks/use-input";
 import styles from "./Checkout.module.css";
