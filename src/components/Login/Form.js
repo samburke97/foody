@@ -50,12 +50,12 @@ const Form = (props) => {
 
   const defaultEmailState = {
     value: "",
-    isValid: "",
+    isValid: false,
   };
 
   const defaultPasswordState = {
     value: "",
-    isValid: "",
+    isValid: false,
   };
 
   //Use Reducer for validating states
@@ -113,12 +113,15 @@ const Form = (props) => {
     };
   }, [emailIsValid, passwordIsValid]);
 
+  //Define Refs
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
   const loginHandler = (event) => {
     setIsFormSubmitted(true);
     event.preventDefault();
+
     if (formIsValid) {
       authCtx.login();
       authCtx.navChange();
@@ -143,6 +146,7 @@ const Form = (props) => {
         <Input
           label="Email"
           isValid={emailIsValid}
+          ref={emailInputRef}
           input={{
             type: "email",
             name: "email",
@@ -166,7 +170,7 @@ const Form = (props) => {
             onBlur: validatePasswordHandler,
           }}
         />
-        {!passwordIsValid && (
+        {!passwordIsValid && isFormSubmitted && (
           <p>
             Please enter a valid password (Password greater than 6 characters)
           </p>
