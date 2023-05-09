@@ -38,17 +38,18 @@ const Form = (props) => {
   // Manage States for Button and Styles
 
   const [formIsValid, setFormIsValid] = useState(false);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
   //Default Email & Password state for UseReducer
 
   const defaultEmailState = {
     value: "",
-    isvalid: null,
+    isValid: "",
   };
 
   const defaultPasswordState = {
     value: "",
-    isValid: null,
+    isValid: "",
   };
 
   //Use Reducer for validating states
@@ -89,10 +90,12 @@ const Form = (props) => {
     });
   };
 
-  //Set form validity
+  //Destructuring state
 
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
+
+  //Set form is Valid using UseEffect
 
   useEffect(() => {
     const identifier = setTimeout(() => {
@@ -107,9 +110,8 @@ const Form = (props) => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
-  //Handle Login
-
   const loginHandler = (event) => {
+    setIsFormSubmitted(true);
     event.preventDefault();
     if (formIsValid) {
       authCtx.login();
@@ -133,7 +135,6 @@ const Form = (props) => {
       </div>
       <form className={styles.form} onSubmit={loginHandler}>
         <Input
-          ref={emailInputRef}
           label="Email"
           isValid={emailIsValid}
           input={{
@@ -145,7 +146,7 @@ const Form = (props) => {
             onBlur: validateEmailHandler,
           }}
         />
-        {!emailIsValid && <p>Please enter a valid email (must contain '@')</p>}
+        {!emailIsValid && isFormSubmitted && <p>Email must contain '@'</p>}
         <Input
           ref={passwordInputRef}
           label="Password"
@@ -160,7 +161,9 @@ const Form = (props) => {
           }}
         />
         {!passwordIsValid && (
-          <p>Please enter a valid password (greater than 6 characters)</p>
+          <p>
+            Please enter a valid password (Password greater than 6 characters)
+          </p>
         )}
         <button>Submit</button>
       </form>
