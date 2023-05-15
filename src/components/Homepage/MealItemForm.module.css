@@ -1,0 +1,29 @@
+.form {
+  text-align: center;
+}
+
+.form input {
+  justify-content: flex-end;
+  padding: 0.25rem 1rem;
+  border: 1px solid #000;
+  margin-left: 0.5rem;
+  border-radius: 8px;
+}
+
+.form .control {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.form button {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}

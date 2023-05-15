@@ -1,32 +1,23 @@
 .wrapper {
-  background: url("../../assets/footer.jpg") no-repeat top right;
-  background-size: cover;
+  background: #000000 url("../../assets/foody.jpg") no-repeat right top/cover;
 }
 
 .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 90%;
   height: 20rem;
   margin: 0 auto;
   padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .footer h2 {
-  font-size: 8rem;
-}
-
-@media screen and (max-width: 768px) {
-  .footer h2 {
-    font-size: 8rem;
-  }
+  font-size: 6rem;
 }
 
 .icons {
   display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
   gap: 1rem;
 }
 

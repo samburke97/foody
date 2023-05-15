@@ -1,21 +1,24 @@
-import React, { useContext } from "react";
-import { AuthContext } from "./store/auth-context";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
-import Homepage from "./components/Homepage/Homepage";
+import React from "react";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Root from "./pages/Root";
+import Login from "./pages/Login";
+import Homepage from "./pages/Homepage";
+import ErrorPage from "./pages/ErrorPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Login /> },
+      { path: "/homepage", element: <Homepage /> },
+    ],
+  },
+]);
 
 function App() {
-  const authCtx = useContext(AuthContext);
-
-  return (
-    <>
-      <main>
-        {!authCtx.isLoggedIn && <Header />}
-        {authCtx.isLoggedIn && <Homepage />}
-        <Footer />
-      </main>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

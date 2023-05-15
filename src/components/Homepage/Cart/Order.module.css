@@ -1,0 +1,25 @@
+.content {
+  width: 90%;
+  margin: 1rem auto;
+}
+
+.content p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.content .actions {
+  margin: 1rem 0;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #000;
+}
+
+.content .order {
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+  font-family: inherit;
+  border: none;
+  padding: 0.5rem 1rem;
+}

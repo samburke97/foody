@@ -2,7 +2,7 @@ import ReactDOM from "react-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "../../store/auth-context";
 import Form from "../Login/Form";
-import Order from "../Homepage/Meals/Cart/Order";
+import Order from "../Homepage/Cart/Order";
 import styles from "./Modal.module.css";
 
 export const Background = (props) => {
