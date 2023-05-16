@@ -14,8 +14,11 @@ Login via the Hamburger icon on the homepage.
 
 #### How do I create an order?
 
-Add your desired items to the cart and navigate to the Hamburger icon to adjust items and order.
+Add your desired items to the cart and navigate to the Hamburger icon to adjust items and complete order.
 
-## Technology
+## Tech Stack 🚀
 
-React.js, Redux/Redux Toolkit, Firebase, CSS Modules
+- React.js
+- Redux/Redux Toolkit
+- Firebase
+- CSS Modules
