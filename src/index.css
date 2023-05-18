@@ -20,4 +20,5 @@ html {
 body {
   font-family: "Bebas Neue", sans-serif;
   color: var(--primary);
+  text-decoration: none;
 }
