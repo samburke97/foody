@@ -29,6 +29,10 @@ h3 {
   .content {
     text-align: center;
   }
+
+  h1 {
+    font-size: 4rem;
+  }
   .meals {
     flex-direction: column;
     align-items: center;
