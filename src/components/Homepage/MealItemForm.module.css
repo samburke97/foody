@@ -12,8 +12,7 @@
 
 .form .control {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
+  align-items: center;
 }
 
 .form button {
@@ -26,4 +25,5 @@
 .actions {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
