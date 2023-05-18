@@ -3,6 +3,7 @@
   margin-left: 0;
   padding: 0.5rem 1rem;
   background-color: #efefefef;
+  color: var(--primary);
   font-size: 1.2rem;
   font-family: inherit;
   border: none;
