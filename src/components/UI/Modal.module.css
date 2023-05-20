@@ -15,8 +15,8 @@
   height: 100vh;
   background-color: #ffffff;
   z-index: 20;
+  width: 100%;
   overflow: scroll;
-  width: 80%;
 }
 
 @media (min-width: 768px) {
@@ -28,5 +28,18 @@
 @media (min-width: 1200px) {
   .overlay {
     width: calc(30% + 10vw);
+  }
+}
+
+.slide {
+  animation: slideOut 0.3s ease-out;
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }

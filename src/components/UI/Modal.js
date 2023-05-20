@@ -19,7 +19,9 @@ export const Overlay = () => {
   const authCtx = useContext(AuthContext);
 
   return (
-    <div className={styles.overlay}>
+    <div
+      className={`${styles.overlay} ${authCtx.navChange ? styles.slide : ""}`}
+    >
       {!authCtx.isLoggedIn && <Form />}
 
       {authCtx.isLoggedIn && <Order />}

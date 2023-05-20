@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 import { AuthContext } from "../store/auth-context";
 import hero from "../assets/hero.png";
@@ -7,6 +7,18 @@ import styles from "./Login.module.css";
 
 const Login = () => {
   const authCtx = useContext(AuthContext);
+  const [jiggle, setJiggle] = useState(false);
+  const btnClasses = `${styles.icon} ${jiggle ? styles.jiggle : ""}`;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setJiggle((prevJiggle) => !prevJiggle);
+    }, 1500);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <div className={styles.login}>
@@ -14,7 +26,7 @@ const Login = () => {
         <FaHamburger
           size={72}
           onClick={authCtx.navChange}
-          className={styles.icon}
+          className={btnClasses}
         />
         {authCtx.navIsActive && <Modal onExit={authCtx.navChange} />}
         <div className={styles.content}>
@@ -30,4 +42,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;

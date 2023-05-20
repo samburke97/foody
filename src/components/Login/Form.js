@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef } from "react";
-import { FaHamburger } from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
 import { AuthContext } from "../../store/auth-context";
 import { useNavigate } from "react-router-dom";
 import Input from "../UI/Input";
@@ -69,7 +69,7 @@ const Form = () => {
     <>
       <div className={styles.header}>
         <h2>Foody</h2>
-        <FaHamburger
+        <IoClose
           size={34}
           className={styles.icon}
           onClick={authCtx.navChange}
